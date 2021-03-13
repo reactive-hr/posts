@@ -1,17 +1,13 @@
-import React from 'react'
+import Home from './pages/Home'
+import withLogger from './utils/withLogger'
 
 import './App.css'
 
-function App() {
-  return (
-    <div className='container'>
-      <div className='row'>
-        <div className='col-sm'>One of three columns</div>
-        <div className='col-sm'>One of three columns</div>
-        <div className='col-sm'>One of three columns</div>
-      </div>
-    </div>
-  )
+function App({ ...props }) {
+  const { logger } = props
+  logger()
+
+  return <Home />
 }
 
-export default App
+export default withLogger(App, { msg: 'Pozdrav iz' })
