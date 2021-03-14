@@ -1,4 +1,4 @@
-const withLogger = function (
+function withLogger(
   WrappedComponent: React.ComponentType<{ logger: () => void }>,
   options = { msg: 'Hello from' }
 ) {
