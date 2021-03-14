@@ -10,7 +10,7 @@ import Page404 from './pages/Page404'
 
 function App({ ...props }) {
   const { logger } = props
-  logger()
+  logger('proba1', 2)
 
   return (
     <Router>

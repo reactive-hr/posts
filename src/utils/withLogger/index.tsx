@@ -3,8 +3,12 @@ const withLogger = function (
   options = { msg: 'Hello from' }
 ) {
   return function ({ ...props }) {
-    const logger = () => {
-      console.log(options.msg, WrappedComponent.displayName || WrappedComponent.name)
+    const logger = (...args: any[]) => {
+      console.log(
+        options.msg,
+        WrappedComponent.name || WrappedComponent.displayName || 'Component?',
+        ...args
+      )
     }
 
     return (
