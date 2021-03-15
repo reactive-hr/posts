@@ -8,18 +8,16 @@ const withLogger = function <P extends object>(
 ): React.FC<P & IWithLoggerProps> {
   return function ({ ...props }) {
     const logger = (...args: any[]) => {
-      console.log(
-        options.msg,
-        WrappedComponent.name || WrappedComponent.displayName || 'Component?',
-        ...args
-      )
+      if (process.env.NODE_ENV === 'development') {
+        console.log(
+          options.msg,
+          WrappedComponent.name || WrappedComponent.displayName || 'Component?',
+          ...args
+        )
+      }
     }
 
-    return (
-      <div>
-        <WrappedComponent logger={logger} {...(props as P)} />
-      </div>
-    )
+    return <WrappedComponent logger={logger} {...(props as P)} />
   }
 }
 

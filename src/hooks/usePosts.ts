@@ -8,7 +8,6 @@ function usePosts(): IUseFetchRet {
     data: [],
     error: null,
   })
-
   const resPosts = useFetch('posts', 'https://jsonplaceholder.typicode.com/posts')
   const resComments = useFetch('comments', 'https://jsonplaceholder.typicode.com/comments')
   const resUsers = useFetch('users', 'https://jsonplaceholder.typicode.com/users')

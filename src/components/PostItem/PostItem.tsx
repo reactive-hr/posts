@@ -1,10 +1,15 @@
 import withLogger from '../../utils/withLogger'
 
-function PostItem({ ...otherProps }) {
-  const { logger } = otherProps
-  logger()
+interface IPostItemParams {
+  data: { [x: string]: any }
+  [x: string]: any
+}
 
-  return <div>Post Item</div>
+function PostItem({ data, ...otherProps }: IPostItemParams) {
+  const { logger } = otherProps
+  logger(data)
+
+  return <div>{data.user.name}</div>
 }
 
 export default withLogger(PostItem)

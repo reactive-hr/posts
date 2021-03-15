@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { IUseFetchRet } from './types'
 
-// TODO caching with key
+// TODO real caching with key
+// Now key change force refetch
 function useFetch(key: string, url: string, options?: {}): IUseFetchRet {
   const [res, setRes] = useState<IUseFetchRet>({
     isLoading: true,
@@ -36,7 +37,7 @@ function useFetch(key: string, url: string, options?: {}): IUseFetchRet {
     }
 
     fetchData()
-  }, [url, options])
+  }, [key, url, options])
 
   return res
 }
