@@ -1,10 +1,10 @@
-import useFetch from '../hooks/useFetch'
+import usePosts from '../hooks/usePosts'
 import withLogger from '../utils/withLogger'
 
 function Posts({ ...props }) {
-  const res = useFetch('posts', 'https://jsonplaceholder.typicode.com/posts')
+  const resPosts = usePosts()
   const { logger } = props
-  logger(res)
+  logger(resPosts)
 
   return <div>Posts</div>
 }
