@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { IUseFetchRet } from './types'
 import useFetch from './useFetch'
 
-function usePosts() {
+function usePosts(): IUseFetchRet {
   const [res, setRes] = useState<IUseFetchRet>({
     isLoading: true,
     data: [],

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { IUseFetchRet } from './types'
 
 // TODO caching with key
-function useFetch(key: string, url: string, options?: {}) {
+function useFetch(key: string, url: string, options?: {}): IUseFetchRet {
   const [res, setRes] = useState<IUseFetchRet>({
     isLoading: true,
     data: [],

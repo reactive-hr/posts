@@ -1,7 +1,11 @@
-function withLogger(
-  WrappedComponent: React.ComponentType<{ logger: () => void }>,
+interface IWithLoggerProps {
+  logger?: (...args: any[]) => void
+}
+
+const withLogger = function <P extends object>(
+  WrappedComponent: React.ComponentType<P>,
   options = { msg: 'Hello from' }
-) {
+): React.FC<P & IWithLoggerProps> {
   return function ({ ...props }) {
     const logger = (...args: any[]) => {
       console.log(
@@ -13,7 +17,7 @@ function withLogger(
 
     return (
       <div>
-        <WrappedComponent logger={logger} {...props} />
+        <WrappedComponent logger={logger} {...(props as P)} />
       </div>
     )
   }

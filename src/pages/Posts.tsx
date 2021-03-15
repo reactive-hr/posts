@@ -1,6 +1,8 @@
 import usePosts from '../hooks/usePosts'
 import withLogger from '../utils/withLogger'
 import Loading from '../components/Loading'
+import PostItem from '../components/PostItem'
+import SearchPost from '../components/SearchPost'
 
 function Posts({ ...props }) {
   const resPosts = usePosts()
@@ -12,7 +14,8 @@ function Posts({ ...props }) {
       <div className="row">
         <div className="col">
           <h3>All Posts</h3>
-          {resPosts.isLoading && <Loading />}
+          <SearchPost onChange={(a: string) => console.log(a)} />
+          {resPosts.isLoading ? <Loading /> : <PostItem />}
         </div>
       </div>
     </div>

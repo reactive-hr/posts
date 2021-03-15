@@ -1,3 +1,5 @@
+import withLogger from '../../utils/withLogger'
+
 function PostItem({ ...otherProps }) {
   const { logger } = otherProps
   logger()
@@ -5,4 +7,4 @@ function PostItem({ ...otherProps }) {
   return <div>Post Item</div>
 }
 
-export default PostItem
+export default withLogger(PostItem)
