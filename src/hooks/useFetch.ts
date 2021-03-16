@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import { IUseFetchRet } from './types'
 
-// TODO caching with key
-function useFetch(key: string, url: string, options?: {}) {
-  const [res, setRes] = useState({
+// TODO real caching with key
+// Now key change force refetch
+function useFetch(key: string, url: string, options?: {}): IUseFetchRet {
+  const [res, setRes] = useState<IUseFetchRet>({
     isLoading: true,
-    data: null,
+    data: [],
     error: null,
   })
 
@@ -12,7 +14,7 @@ function useFetch(key: string, url: string, options?: {}) {
     async function fetchData() {
       try {
         const response = await fetch(url, options)
-        // throw error ako response.status nije 2XX
+        // throw error if response.status not 2XX
         if (!response.ok) {
           throw new Error(`Response ${response.status}`)
         }
@@ -21,21 +23,22 @@ function useFetch(key: string, url: string, options?: {}) {
         setRes(prevRes => ({
           ...prevRes,
           isLoading: false,
-          data,
+          // ***** data must be array
+          data: Array.isArray(data) ? data : [data],
           error: null,
         }))
       } catch (error) {
         setRes(prevRes => ({
           ...prevRes,
           isLoading: false,
-          data: null,
+          data: [],
           error,
         }))
       }
     }
 
     fetchData()
-  }, [url, options])
+  }, [key, url, options])
 
   return res
 }

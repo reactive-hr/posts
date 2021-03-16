@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import withLogger from './utils/withLogger'
 
-import './App.css'
-
 import Home from './pages/Home'
 import Post from './pages/Post'
 import Posts from './pages/Posts'
