@@ -5,13 +5,15 @@ import Home from './pages/Home'
 import Post from './pages/Post'
 import Posts from './pages/Posts'
 import Page404 from './pages/Page404'
+import NavBar from './components/NavBar'
 
 function App({ ...props }) {
   const { logger } = props
-  logger('proba1', 2)
+  logger()
 
   return (
     <Router>
+      <NavBar />
       <div>
         <Switch>
           <Route exact path="/">
@@ -32,4 +34,4 @@ function App({ ...props }) {
   )
 }
 
-export default withLogger(App, { msg: 'Pozdrav iz' })
+export default withLogger(App)
