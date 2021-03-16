@@ -23,7 +23,8 @@ function useFetch(key: string, url: string, options?: {}): IUseFetchRet {
         setRes(prevRes => ({
           ...prevRes,
           isLoading: false,
-          data,
+          // ***** data must be array
+          data: Array.isArray(data) ? data : [data],
           error: null,
         }))
       } catch (error) {

@@ -1,0 +1,14 @@
+.post {
+  border: 1px solid #dddddd;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.user {
+  color: #888888;
+}
+
+.title {
+  font-weight: 700;
+}

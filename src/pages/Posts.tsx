@@ -21,14 +21,17 @@ function Posts({ ...props }) {
           {resPosts.isLoading ? (
             <Loading />
           ) : (
-            resPosts.data.map(item => {
+            resPosts.data.map((item: { id?: any; [x: string]: any }) => {
               if (
                 filter !== '' &&
-                item.user.name.substr(0, filter.length).toUpperCase() !== filter.toUpperCase()
+                // ***** begin with
+                // item.user.name.substr(0, filter.length).toUpperCase() !== filter.toUpperCase()
+                // ***** contains
+                !item.user.name.toUpperCase().includes(filter.toUpperCase())
               ) {
                 return null
               }
-              return <PostItem data={item} key={item.id} />
+              return <PostItem data={item} link={`post/${item.id}`} key={item.id} />
             })
           )}
         </div>
