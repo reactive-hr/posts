@@ -8,7 +8,7 @@ import Page404 from './pages/Page404'
 
 function App({ ...props }) {
   const { logger } = props
-  logger('proba1', 2)
+  logger()
 
   return (
     <Router>
@@ -32,4 +32,4 @@ function App({ ...props }) {
   )
 }
 
-export default withLogger(App, { msg: 'Pozdrav iz' })
+export default withLogger(App)
