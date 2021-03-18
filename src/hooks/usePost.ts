@@ -31,8 +31,6 @@ function usePost(id: string): IUseFetchRet {
   // ***** is everything loaded
   useEffect(() => {
     if (!resPosts.isLoading && !resComments.isLoading && !resUsers.isLoading) {
-      console.log(resPosts.data, resComments.data, resUsers.data)
-
       setRes(prevRes => ({
         ...prevRes,
         isLoading: false,
